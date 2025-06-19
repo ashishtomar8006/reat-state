@@ -18,8 +18,6 @@ const Hero: React.FC = () => {
           unoptimized
         />
       </div>
-
-
       {/* Overlay for gradient effect (optional) */}
       <div className="absolute   bg-gradient-to-b from-skyblue via-lightskyblue dark:via-[#4298b0] to-white/10 dark:to-black/10 z-10" />
 
