@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero/banner_1_new.jpg"
+          src="/images/hero/banner1.jpg"
           alt="Hero Background"
           fill
           className="object-cover"
