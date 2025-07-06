@@ -14,6 +14,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const [showEnterButton, setShowEnterButton] = useState(false)
   const [currentText, setCurrentText] = useState(0)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isClient, setIsClient] = useState(false)
+
+  // Ensure component only renders on client
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const loadingTexts = [
     "Discovering luxury properties...",
@@ -30,7 +36,33 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     "/images/hero/banner5.jpg",
   ]
 
+  // Fixed particle positions to avoid hydration mismatch
+  const particlePositions = [
+    { left: 10, top: 20 },
+    { left: 25, top: 15 },
+    { left: 40, top: 30 },
+    { left: 55, top: 10 },
+    { left: 70, top: 25 },
+    { left: 85, top: 35 },
+    { left: 15, top: 50 },
+    { left: 30, top: 60 },
+    { left: 45, top: 45 },
+    { left: 60, top: 65 },
+    { left: 75, top: 55 },
+    { left: 90, top: 70 },
+    { left: 20, top: 80 },
+    { left: 35, top: 85 },
+    { left: 50, top: 75 },
+    { left: 65, top: 90 },
+    { left: 80, top: 85 },
+    { left: 95, top: 95 },
+    { left: 5, top: 40 },
+    { left: 12, top: 75 },
+  ]
+
   useEffect(() => {
+    if (!isClient) return
+
     const interval = setInterval(() => {
       setLoadingProgress((prev) => {
         if (prev >= 100) {
@@ -43,23 +75,32 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     }, 60)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [isClient])
 
   useEffect(() => {
+    if (!isClient) return
+
     const textInterval = setInterval(() => {
       setCurrentText((prev) => (prev + 1) % loadingTexts.length)
     }, 2000)
 
     return () => clearInterval(textInterval)
-  }, [])
+  }, [isClient, loadingTexts.length])
 
   useEffect(() => {
+    if (!isClient) return
+
     const imageInterval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length)
     }, 3000)
 
     return () => clearInterval(imageInterval)
-  }, [])
+  }, [isClient, backgroundImages.length])
+
+  // Don't render anything on server
+  if (!isClient) {
+    return null
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -70,7 +111,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     exit: {
       opacity: 0,
       scale: 1.1,
-      transition: { duration: 1.2, ease: "easeInOut" },
+      transition: { duration: 1.2, ease: "easeInOut" as const },
     },
   }
 
@@ -86,7 +127,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       opacity: 1,
       transition: {
         duration: 1.5,
-        ease: "easeOut",
+        ease: "easeOut" as const,
         delay: 0.3,
       },
     },
@@ -105,7 +146,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       y: 0,
       rotateX: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 150,
         damping: 15,
         delay: 0.5,
@@ -131,7 +172,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       transition: {
         duration: 3,
         repeat: Number.POSITIVE_INFINITY,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   }
@@ -179,30 +220,30 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
           {/* Animated Overlay */}
           <motion.div
-            animate={{
-              background: [
-                "linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(7,190,138,0.3) 50%, rgba(0,0,0,0.7) 100%)",
-                "linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(147,51,234,0.4) 50%, rgba(0,0,0,0.8) 100%)",
-                "linear-gradient(225deg, rgba(0,0,0,0.7) 0%, rgba(59,130,246,0.3) 50%, rgba(0,0,0,0.7) 100%)",
-                "linear-gradient(315deg, rgba(0,0,0,0.8) 0%, rgba(7,190,138,0.3) 50%, rgba(0,0,0,0.8) 100%)",
-              ],
-            }}
+            // animate={{
+            //   background: [
+            //     "linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(7,190,138,0.3) 50%, rgba(0,0,0,0.7) 100%)",
+            //     "linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(147,51,234,0.4) 50%, rgba(0,0,0,0.8) 100%)",
+            //     "linear-gradient(225deg, rgba(0,0,0,0.7) 0%, rgba(59,130,246,0.3) 50%, rgba(0,0,0,0.7) 100%)",
+            //     "linear-gradient(315deg, rgba(0,0,0,0.8) 0%, rgba(7,190,138,0.3) 50%, rgba(0,0,0,0.8) 100%)",
+            //   ],
+            // }}
             transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
             className="absolute inset-0"
           />
         </div>
 
-        {/* Animated Particles */}
+        {/* Animated Particles with Fixed Positions */}
         <div className="absolute inset-0 overflow-hidden">
-          {Array.from({ length: 20 }).map((_, i) => (
+          {particlePositions.map((position, i) => (
             <motion.div
               key={i}
               variants={particleVariants}
               animate="animate"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
+                left: `${position.left}%`,
+                top: `${position.top}%`,
+                animationDelay: `${(i * 0.15) % 3}s`,
               }}
               className="absolute w-2 h-2 bg-white rounded-full opacity-30"
             />
@@ -386,7 +427,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                   whileHover="hover"
                   whileTap="tap"
                   onClick={onComplete}
-                  className="group relative px-16 py-5 bg-gradient-to-r from-primary via-purple-600 to-blue-600 text-white font-bold rounded-full text-xl shadow-2xl border border-white/20 overflow-hidden backdrop-blur-sm"
+                  className="group relative px-16 py-5 border-white  text-white font-bold rounded-full text-xl shadow-2xl border overflow-hidden backdrop-blur-sm"
                 >
                   {/* Animated Background */}
                   <motion.div

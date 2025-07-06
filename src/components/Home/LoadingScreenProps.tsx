@@ -111,7 +111,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     exit: {
       opacity: 0,
       scale: 1.1,
-      transition: { duration: 1.2, ease: "easeInOut" },
+      transition: { duration: 1.2, ease: "easeInOut" as const },
     },
   }
 
@@ -127,7 +127,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       opacity: 1,
       transition: {
         duration: 1.5,
-        ease: "easeOut",
+        ease: "easeOut" as const,
         delay: 0.3,
       },
     },
@@ -146,7 +146,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       y: 0,
       rotateX: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 150,
         damping: 15,
         delay: 0.5,
@@ -172,7 +172,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       transition: {
         duration: 3,
         repeat: Number.POSITIVE_INFINITY,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   }
