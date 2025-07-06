@@ -9,10 +9,10 @@ const Categories = () => {
         <div className="flex justify-center items-center mb-8">
           <div className="w-24 h-24 relative">
             <Image
-              src="/images/header/icon_logo.png"
+              src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=100"
               alt="Jubilee Clio Logo"
               fill
-              className="object-contain"
+              className="object-contain rounded-full"
               unoptimized={true}
             />
           </div>

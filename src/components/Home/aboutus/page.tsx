@@ -23,6 +23,7 @@ export default function AboutSection() {
                   alt="Modern office interior"
                   fill
                   className="object-cover"
+                  unoptimized
                 />
               </div>
               
@@ -40,6 +41,7 @@ export default function AboutSection() {
                   alt="Modern office space with wooden accents"
                   fill
                   className="object-cover"
+                  unoptimized
                 />
               </div>
               
@@ -130,6 +132,7 @@ export default function AboutSection() {
                       width={48}
                       height={48}
                       className="object-cover"
+                      unoptimized
                     />
                   </div>
                   <div>

@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import ProjectCounter from '../counter/ProjectCounter'
 
 const Hero: React.FC = () => {
   return (
@@ -10,7 +9,7 @@ const Hero: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero/banner1.jpg"
+          src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1920"
           alt="Hero Background"
           fill
           className="object-cover"
@@ -18,16 +17,20 @@ const Hero: React.FC = () => {
           unoptimized
         />
       </div>
-      {/* Overlay for gradient effect (optional) */}
-      <div className="absolute   bg-gradient-to-b from-skyblue via-lightskyblue dark:via-[#4298b0] to-white/10 dark:to-black/10 z-10" />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-skyblue via-lightskyblue dark:via-[#4298b0] to-white/10 dark:to-black/10 z-10" />
 
-      {/* Foreground Content */}
-      <div className="relative z-20 container mx-auto px-5 2xl:px-0 pt-32 md:pt-36 md:pb-68 max-w-8xl text-white dark:text-dark">
+      {/* Content */}
+      <div className="relative z-20 container mx-auto px-5 2xl:px-0 pt-32 md:pt-36 h-full flex items-center max-w-8xl text-white dark:text-dark">
         <div className="text-center md:text-start">
-          <p className="text-lg font-medium">Palm Springs, CA</p>
+          <p className="text-lg font-medium">Sector 75, Mohali</p>
           <h1 className="text-6xl sm:text-9xl font-semibold -tracking-wider md:max-w-3xl mt-4 mb-6">
-            Futuristic Haven
+            Jubilee Clio
           </h1>
+          <p className="text-xl mb-8 max-w-2xl">
+            Premium commercial spaces designed for business excellence
+          </p>
           <div className="flex flex-col xs:flex-row justify-center md:justify-start gap-4">
             <Link
               href="/contactus"
