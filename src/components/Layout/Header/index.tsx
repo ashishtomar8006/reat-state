@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import NavLink from './Navigation/NavLink'
 import { useTheme } from 'next-themes'
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 
 const Header: React.FC = () => {
   const [sticky, setSticky] = useState(false)
@@ -38,108 +39,129 @@ const Header: React.FC = () => {
   const isHomepage = pathname === '/'
 
   return (
-    <header className={`fixed h-24 py-1 z-50 w-full transition-all duration-300 lg:px-0 px-4 ${
-      sticky 
-        ? "top-3 bg-white/95 dark:bg-black/95 backdrop-blur-md rounded-full shadow-lg" 
-        : "top-0 bg-black/20 backdrop-blur-sm"
-    }`}>
-      <nav className={`container mx-auto max-w-8xl flex items-center justify-between py-4 duration-300 ${
-        sticky ? "px-6" : ""
-      }`}>
+    <header className={`fixed h-24 py-1 z-50 w-full bg-black/20 transition-all duration-300 lg:px-0 px-4 ${sticky ? "top-3 rounded-full bg-white" : "top-0"}`}>
+      {/* <nav className={`container mx-auto max-w-8xl flex items-center justify-between py-4 duration-300 ${sticky ? "shadow-lg bg-white dark:bg-dark rounded-full top-5 px-4 " : "shadow-none top-0"}`}> */}
+      <nav className={`container mx-auto max-w-8xl flex items-center justify-between py-4 duration-300 ${sticky ? "" : "shadow-none top-0"}`}>
         <div className='flex justify-between items-center gap-2 w-full'>
           <div>
-            <Link href='/' className="flex items-center gap-2">
-              <span className={`text-2xl md:text-3xl font-bold italic bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent ${
-                !sticky && isHomepage ? 'text-white' : ''
-              }`}>
-                Jubilee Clio
-              </span>
+            <Link href='/'>
+              {/* <Image
+                src={'/images/header/logo.webp'}
+                alt='logo'
+                width={150}
+                height={68}
+                unoptimized={true}
+                className={`${isHomepage ? sticky ? "block dark:hidden" : "hidden" : sticky ? "block dark:hidden" : "block dark:hidden"}`}
+              /> */}
+              {/* <Image
+                src={'/images/header/logo.webp'}
+                alt='logo'
+                width={150}
+                height={68}
+                unoptimized={true}
+                className={`${isHomepage ? sticky ? "hidden dark:block" : "block" : sticky ? "dark:block hidden" : "dark:block hidden"}`}
+              /> */}
+                  <span className="text-3xl font-semibold italic text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 font-[cursive]">
+            Real eState
+          </span>
+
+
+
             </Link>
           </div>
-          
           <div className='flex items-center gap-2 sm:gap-6'>
-            <button
-              className='hover:cursor-pointer p-2 rounded-full hover:bg-white/10 transition-colors'
+            {/* <button
+              className='hover:cursor-pointer'
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
               <Icon
                 icon={'solar:sun-bold'}
-                width={24}
-                height={24}
-                className={`dark:hidden block ${
-                  isHomepage && !sticky ? 'text-white' : 'text-dark'
-                }`}
+                width={32}
+                height={32}
+                className={`dark:hidden block ${isHomepage
+                  ? sticky
+                    ? 'text-dark'
+                    : 'text-white'
+                  : 'text-dark'
+                  }`}
               />
               <Icon
                 icon={'solar:moon-bold'}
-                width={24}
-                height={24}
+                width={32}
+                height={32}
                 className='dark:block hidden text-white'
               />
-            </button>
-            
-            <div className={`hidden lg:flex items-center gap-6`}>
-              <Link 
-                href='/contactus' 
-                className={`text-sm font-medium hover:text-primary transition-colors ${
-                  isHomepage && !sticky 
-                    ? 'text-white/90 hover:text-white' 
-                    : 'text-dark/70 dark:text-white/70 hover:text-primary'
+            </button> */}
+            <div className={`hidden md:block`}>
+              <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
+                ? sticky
+                  ? 'text-dark dark:text-white hover:text-primary border-dark dark:border-white'
+                  : 'text-white hover:text-primary'
+                : 'text-dark hover:text-primary'
                 }`}
               >
+                {/* <Icon icon={'ph:phone-bold'} width={24} height={24} /> */}
                 Bespoke Office Spaces
               </Link>
-              
-              <Link 
-                href='/contactus' 
-                className={`text-sm font-medium hover:text-primary transition-colors ${
-                  isHomepage && !sticky 
-                    ? 'text-white/90 hover:text-white' 
-                    : 'text-dark/70 dark:text-white/70 hover:text-primary'
+            </div>
+
+            <div className={`hidden md:block`}>
+              <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
+                ? sticky
+                  ? 'text-dark dark:text-white hover:text-primary border-dark dark:border-white'
+                  : 'text-white hover:text-primary'
+                : 'text-dark hover:text-primary'
                 }`}
               >
+                {/* <Icon icon={'ph:phone-bold'} width={24} height={24} /> */}
                 Curated Retail Spaces 
               </Link>
-              
-              <Link 
-                href='/contactus' 
-                className={`text-sm font-medium hover:text-primary transition-colors ${
-                  isHomepage && !sticky 
-                    ? 'text-white/90 hover:text-white' 
-                    : 'text-dark/70 dark:text-white/70 hover:text-primary'
+            </div>
+
+
+            <div className={`hidden md:block`}>
+              <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
+                ? sticky
+                  ? 'text-dark dark:text-white hover:text-primary border-dark dark:border-white'
+                  : 'text-white hover:text-primary'
+                : 'text-dark hover:text-primary'
                 }`}
               >
+                {/* <Icon icon={'ph:phone-bold'} width={24} height={24} /> */}
                 Location
               </Link>
             </div>
 
+
             <div>
               <button
                 onClick={() => setNavbarOpen(!navbarOpen)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium hover:cursor-pointer border transition-all duration-300 ${
-                  isHomepage && !sticky
-                    ? 'text-white border-white/30 hover:bg-white/10'
-                    : 'text-dark dark:text-white border-dark/20 dark:border-white/20 hover:bg-dark/5 dark:hover:bg-white/5'
-                } ${sticky ? 'bg-primary text-white border-primary hover:bg-primary/90' : ''}`}
-                aria-label='Toggle mobile menu'
-              >
-                <Icon icon={'ph:list'} width={20} height={20} />
-                <span className='hidden sm:block text-sm'>Menu</span>
+                className={`flex items-center gap-3 p-2 sm:px-5 sm:py-3 rounded-full font-semibold hover:cursor-pointer border ${isHomepage
+                  ? sticky
+                    ? 'text-white bg-dark dark:bg-white dark:text-dark dark:hover:text-white dark:hover:bg-dark hover:text-dark hover:bg-white border-dark dark:border-white'
+                    : 'text-dark bg-white dark:text-dark hover:bg-transparent hover:text-white border-white'
+                  : 'bg-dark text-white hover:bg-transparent hover:text-dark dark:bg-white dark:text-dark dark:hover:bg-transparent dark:hover:text-white duration-300'
+                  }`}
+                aria-label='Toggle mobile menu'>
+                <span>
+                  <Icon icon={'ph:list'} width={24} height={24} />
+                </span>
+                <span className='hidden sm:block'>Menu</span>
               </button>
             </div>
           </div>
         </div>
       </nav>
 
-      {navbarOpen && (
-        <div className='fixed top-0 left-0 w-full h-full bg-black/50 z-40' />
-      )}
+      {
+        navbarOpen && (
+          <div className='fixed top-0 left-0 w-full h-full bg-black/50 z-40' />
+        )
+      }
 
       <div
         ref={sideMenuRef}
-        className={`fixed top-0 right-0 h-full w-full bg-dark shadow-lg transition-transform duration-300 max-w-2xl ${
-          navbarOpen ? 'translate-x-0' : 'translate-x-full'
-        } z-50 px-20 overflow-auto no-scrollbar`}
+        className={`fixed top-0 right-0 h-full w-full bg-dark shadow-lg transition-transform duration-300 max-w-2xl ${navbarOpen ? 'translate-x-0' : 'translate-x-full'} z-50 px-20 overflow-auto no-scrollbar`}
       >
         <div className="flex flex-col h-full justify-between">
           <div className="">
@@ -147,14 +169,12 @@ const Header: React.FC = () => {
               <button
                 onClick={() => setNavbarOpen(false)}
                 aria-label='Close mobile menu'
-                className='bg-white p-3 rounded-full hover:cursor-pointer hover:bg-gray-100 transition-colors'
-              >
+                className='bg-white p-3 rounded-full hover:cursor-pointer'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='24'
                   height='24'
-                  viewBox='0 0 24 24'
-                >
+                  viewBox='0 0 24 24'>
                   <path
                     fill='none'
                     stroke='black'
@@ -167,37 +187,41 @@ const Header: React.FC = () => {
               </button>
             </div>
             <nav className='flex flex-col items-start gap-4'>
-              <ul className='w-full space-y-2'>
+              <ul className='w-full'>
                 {navLinks.map((item, index) => (
                   <NavLink key={index} item={item} onClick={() => setNavbarOpen(false)} />
                 ))}
+                {/* <li className='flex items-center gap-4'>
+                  <Link href="/signin" className='py-4 px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full border border-primary font-semibold mt-3 hover:bg-transparent hover:text-primary duration-300'>
+                    Sign In
+                  </Link>
+                  <Link href="/" className='py-4 px-8 bg-transparent border border-primary text-base leading-4 block w-fit text-primary rounded-full font-semibold mt-3 hover:bg-primary hover:text-white duration-300'>
+                    Sign up
+                  </Link>
+                </li> */}
               </ul>
             </nav>
           </div>
 
-          <div className='flex flex-col gap-4 my-8 text-white'>
-            <p className='text-base font-normal text-white/60'>
-              Contact Information
+          <div className='flex flex-col gap-1 my-2 text-white'>
+          
+
+            <p className='text-base sm:text-xm font-normal text-white/40'>
+              Contact
             </p>
-            <Link 
-              href="mailto:info@jubileeclio.com" 
-              className='text-base font-medium text-inherit hover:text-primary transition-colors'
-            >
-              info@jubileeclio.com
+
+          
+
+            <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
+              hello@homely.com
             </Link>
-            <Link 
-              href="tel:+919876543210" 
-              className='text-base font-medium text-inherit hover:text-primary transition-colors'
-            >
-              +91 98765 43210
+            <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
+              +1-212-456-7890{' '}
             </Link>
-            <p className='text-sm text-white/60 mt-2'>
-              Sector 75, Mohali, Punjab
-            </p>
           </div>
         </div>
       </div>
-    </header>
+    </header >
   )
 }
 
