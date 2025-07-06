@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero/banner_1_new.jpg"
+          src="/images/hero/banner1.jpg"
           alt="Hero Background"
           fill
           className="object-cover"
@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
       <div className="absolute   bg-gradient-to-b from-skyblue via-lightskyblue dark:via-[#4298b0] to-white/10 dark:to-black/10 z-10" />
 
       {/* Foreground Content */}
-      <div className="relative z-20 container mx-auto px-5 2xl:px-0 pt-32 md:pt-36 md:pb-68 max-w-8xl text-white dark:text-dark">
+      {/* <div className="relative z-20 container mx-auto px-5 2xl:px-0 pt-32 md:pt-36 md:pb-68 max-w-8xl text-white dark:text-dark">
         <div className="text-center md:text-start">
           <p className="text-lg font-medium">Palm Springs, CA</p>
           <h1 className="text-6xl sm:text-9xl font-semibold -tracking-wider md:max-w-3xl mt-4 mb-6">
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   )
 }

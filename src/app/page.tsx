@@ -7,14 +7,19 @@ import BlogSmall from '@/components/shared/Blog'
 import GetInTouch from '@/components/Home/GetInTouch'
 import FAQ from '@/components/Home/FAQs'
 import ProjectCounter from '@/components/Home/counter/ProjectCounter'
+import AboutSection from '@/components/Home/aboutus/page'
+import SingleImageScroll from '@/components/Home/motion/SingleImageScroll'
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Services />
+      {/* <Services /> */}
+      <AboutSection />
+      <SingleImageScroll />
       <ProjectCounter/>
       <GetInTouch />
+     
       {/* <Properties /> */}
       {/* <FeaturedProperty /> */}
       <Testimonial />

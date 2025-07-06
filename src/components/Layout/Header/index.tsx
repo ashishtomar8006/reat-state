@@ -39,32 +39,38 @@ const Header: React.FC = () => {
   const isHomepage = pathname === '/'
 
   return (
-    <header className={`fixed h-24 py-1 z-50 w-full bg-transparent transition-all duration-300 lg:px-0 px-4 ${sticky ? "top-3" : "top-0"}`}>
+    <header className={`fixed h-24 py-1 z-50 w-full bg-black/20 transition-all duration-300 lg:px-0 px-4 ${sticky ? "top-3 rounded-full bg-white" : "top-0"}`}>
       {/* <nav className={`container mx-auto max-w-8xl flex items-center justify-between py-4 duration-300 ${sticky ? "shadow-lg bg-white dark:bg-dark rounded-full top-5 px-4 " : "shadow-none top-0"}`}> */}
       <nav className={`container mx-auto max-w-8xl flex items-center justify-between py-4 duration-300 ${sticky ? "" : "shadow-none top-0"}`}>
         <div className='flex justify-between items-center gap-2 w-full'>
           <div>
             <Link href='/'>
-              <Image
+              {/* <Image
                 src={'/images/header/logo.webp'}
                 alt='logo'
                 width={150}
                 height={68}
                 unoptimized={true}
                 className={`${isHomepage ? sticky ? "block dark:hidden" : "hidden" : sticky ? "block dark:hidden" : "block dark:hidden"}`}
-              />
-              <Image
+              /> */}
+              {/* <Image
                 src={'/images/header/logo.webp'}
                 alt='logo'
                 width={150}
                 height={68}
                 unoptimized={true}
                 className={`${isHomepage ? sticky ? "hidden dark:block" : "block" : sticky ? "dark:block hidden" : "dark:block hidden"}`}
-              />
+              /> */}
+                  <span className="text-3xl font-semibold italic text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 font-[cursive]">
+            Real eState
+          </span>
+
+
+
             </Link>
           </div>
           <div className='flex items-center gap-2 sm:gap-6'>
-            <button
+            {/* <button
               className='hover:cursor-pointer'
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
@@ -85,7 +91,7 @@ const Header: React.FC = () => {
                 height={32}
                 className='dark:block hidden text-white'
               />
-            </button>
+            </button> */}
             <div className={`hidden md:block`}>
               <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
                 ? sticky
@@ -94,10 +100,39 @@ const Header: React.FC = () => {
                 : 'text-dark hover:text-primary'
                 }`}
               >
-                <Icon icon={'ph:phone-bold'} width={24} height={24} />
-                +1-212-456-789
+                {/* <Icon icon={'ph:phone-bold'} width={24} height={24} /> */}
+                Bespoke Office Spaces
               </Link>
             </div>
+
+            <div className={`hidden md:block`}>
+              <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
+                ? sticky
+                  ? 'text-dark dark:text-white hover:text-primary border-dark dark:border-white'
+                  : 'text-white hover:text-primary'
+                : 'text-dark hover:text-primary'
+                }`}
+              >
+                {/* <Icon icon={'ph:phone-bold'} width={24} height={24} /> */}
+                Curated Retail Spaces 
+              </Link>
+            </div>
+
+
+            <div className={`hidden md:block`}>
+              <Link href='#' className={`text-base text-inherit flex items-center gap-2 border-r pr-6 ${isHomepage
+                ? sticky
+                  ? 'text-dark dark:text-white hover:text-primary border-dark dark:border-white'
+                  : 'text-white hover:text-primary'
+                : 'text-dark hover:text-primary'
+                }`}
+              >
+                {/* <Icon icon={'ph:phone-bold'} width={24} height={24} /> */}
+                Location
+              </Link>
+            </div>
+
+
             <div>
               <button
                 onClick={() => setNavbarOpen(!navbarOpen)}
@@ -156,22 +191,27 @@ const Header: React.FC = () => {
                 {navLinks.map((item, index) => (
                   <NavLink key={index} item={item} onClick={() => setNavbarOpen(false)} />
                 ))}
-                <li className='flex items-center gap-4'>
+                {/* <li className='flex items-center gap-4'>
                   <Link href="/signin" className='py-4 px-8 bg-primary text-base leading-4 block w-fit text-white rounded-full border border-primary font-semibold mt-3 hover:bg-transparent hover:text-primary duration-300'>
                     Sign In
                   </Link>
                   <Link href="/" className='py-4 px-8 bg-transparent border border-primary text-base leading-4 block w-fit text-primary rounded-full font-semibold mt-3 hover:bg-primary hover:text-white duration-300'>
                     Sign up
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>
 
-          <div className='flex flex-col gap-1 my-16 text-white'>
+          <div className='flex flex-col gap-1 my-2 text-white'>
+          
+
             <p className='text-base sm:text-xm font-normal text-white/40'>
               Contact
             </p>
+
+          
+
             <Link href="#" className='text-base sm:text-xm font-medium text-inherit hover:text-primary'>
               hello@homely.com
             </Link>
