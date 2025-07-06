@@ -19,6 +19,7 @@ const GetInTouch: React.FC = () => {
                         <div className="flex flex-col items-center gap-8">
                             <h2 className='text-white lg:text-52 md:text-40 text-3xl max-w-3/4 text-center font-medium'>
                                 Enter a realm where exquisite design and
+                                
                                 timeless luxury come together.
                             </h2>
                             <Link href="#" className='bg-white py-4 px-8 rounded-full text-dark hover:bg-dark hover:text-white duration-300'>
