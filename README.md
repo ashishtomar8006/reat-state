@@ -1,1 +1,0 @@
-# Homely-nextjs-tailwind
